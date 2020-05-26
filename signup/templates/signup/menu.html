@@ -1,0 +1,60 @@
+{% extends 'signup/vbase.html' %}
+
+<title>{% block title %}All Menu{% endblock %}</title>
+
+{% block body %}
+<div class="panel-heading">
+<h1 class="panel-title text-info "><strong>{{user.menu.vendorId}}</strong> Menu </h1>
+</div>
+
+<div class="panel-body">
+<div class="row">
+<div class=" col-md-9 col-lg-9 ">
+    <table class="table table-user-information">
+      <tbody>
+        {% for menu in menus %}
+        <tr>
+          <td> Name:</td>
+          <td>{{ menu.foodname}}</td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td>{{ menu.description}}</td>
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td>{{ menu.price}}</td>
+        </tr>
+        <tr>
+            <td>Quantity: </td>
+            <td>{{ menu.quantity }}</td>
+        </tr>
+        <tr>
+            <td>Status: </td>
+            <td>{{ menu.status }}</td>
+        </tr>
+
+        <tr>
+            <td>Is this a One Time Menu: </td>
+            <td>{{ menu.isRecurring }}</td>
+        </tr>
+        <tr>
+            <td>Frequency of Occurence: </td>
+            <td>{{ menu.frequencyofRecurrence }}</td>
+        </tr>
+    {% endfor %}
+      </tbody>
+    </table>
+    <br>
+
+   <div class="col">
+     <a class="btn btn-success btn-lg" href="{% url 'addmenu' %}">Add Menu</a>
+
+       <a class="btn btn-success btn-lg" href="{% url 'editvendormenu' user.id %}">Edit Menu</a>
+   </div>
+
+</div>
+</div>
+</div>
+
+{% endblock %}

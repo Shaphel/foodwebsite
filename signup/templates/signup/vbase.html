@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}Venture Foods{% endblock title %}</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+         <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+    <ul class="navbar-nav ml-auto text-center">
+        <li class="nav-item active">
+            <a class="nav-link text-light" href="{% url 'home' %}"><font size="3">&nbsp; <strong>Home</strong> </font></a>
+        </li>
+        {% comment %}
+        <li class="nav-item">
+            <a class="nav-link text-light" href="{% url  'menu' %}"><font size="3">&nbsp;<strong>Menu </strong></font></a>
+        </li>
+         <li class="nav-item">
+            <a class="nav-link text-light" href="{% url  'orderlist' %}"><font size="3">&nbsp;<strong>Orders</strong></font></a>
+        </li>
+        {% endcomment %}
+    </ul>
+</div>
+
+<div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+    <ul class="navbar-nav mr-auto text-center">
+      {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link text-light " href="{% url 'logout' %}"><font size="3"> &nbsp;<span aria-hidden="true"></span><strong>LogOut </strong> </font></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light " href="{%url 'vendorprofile' %}"><font size="3"> &nbsp;<span aria-hidden="true"></span><strong>Profile</strong></font></a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+            <a class="nav-link text-light " href="{% url 'vendorlogin' %}"><font size="3">&nbsp;<span aria-hidden="true"></span> <strong>Vendor Login</strong></font></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-light " href="{% url 'vendorsignup' %}"><font size="3">&nbsp;<span aria-hidden="true"></span> <strong>Vendor Signup</strong></font></a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+</div>
+</nav>
+
+{% block body %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{% block title %}Venture Foods{% endblock title %}</title>
+  </head>
+  <body>
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="{% url 'home' %}"><font size="3">&nbsp; <strong>Home</strong> </font></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="{% url 'vendors' %}"><font size="3">&nbsp; <strong>Vendors</strong> </font></a>
+            </li>
+
+        </ul>
+
+    <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+
+        <ul class="navbar-nav mr-auto text-center">
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'logout' %}"><font size="3"> &nbsp;<span aria-hidden="true"></span><strong>Logout </strong> </font></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'customerprofile' %}"><font size="3"> &nbsp;<span aria-hidden="true"></span><strong>My Profile</strong></font></a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'customerlogin' %}"><font size="3">&nbsp;<span aria-hidden="true"></span> <strong>Login</strong></font></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'customersignup' %}"><font size="3">&nbsp;<span aria-hidden="true"></span> <strong>Signup</strong></font></a>
+            </li>
+            {% endif %}
+        </ul>
+
+    </div>
+</nav>
+
+{% block body %}
+{% endblock %}
+<br>
+<br>
+</body>
+</html>

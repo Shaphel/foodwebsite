@@ -1,0 +1,42 @@
+{% extends 'signup/cbase.html'%}
+{% block title %}Log In{% endblock %}
+
+{% block body %}
+<div class="container col-md-8">
+<br>
+<br>
+<h3 class="col-sm-4 col-md-offset-4">Customer Login</h3>
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<br>
+<form class="form-horizontal" role="form" action="#" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="id_username">
+            Username:
+        </label>
+        <div class="col-sm-6">
+            <input id="id_username" maxlength="30" name="username" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="id_password">
+            Password:
+        </label>
+        <div class="col-sm-7">
+            <input id="id_password" maxlength="30" name="password" type="password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
+</div>
+<br>
+<div class="panel-footer">
+Don't have an account? <a href="{% url 'customersignup' %}">Click here</a> to register.
+</div>
+{% endblock %}
